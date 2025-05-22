@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeakPoint</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="/stylesheets/campground.css">
+</head>
+
+<body class="d-flex flex-column vh-100">
+    <%- include("../partials/navbar") %>
+    <div class="container-fluid p-0">
+        <div id="map" style="height: 40em; width: 100%;"></div>
+    </div>
+    <main class="container mt-5">
+        <%- include("../partials/flash") %>
+        <%- body %>
+    </main>
+    <%- include("../partials/footer") %>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js"
+        integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+"
+        crossorigin="anonymous"></script>
+    <script src="/javascripts/validateForms.js"></script>
+    <script>
+        const initialCoords = [42.7339, 25.4858];
+        const initialZoom = 7;
+
+        const map = L.map('map', { zoomControl: false }).setView(initialCoords, initialZoom);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '©PeakPoint'
+        }).addTo(map);
+
+        L.control.zoom({ position: 'topright' }).addTo(map);
+
+        const resetViewControl = L.Control.extend({
+            options: { position: 'topright' },
+            onAdd: function () {
+                const button = L.DomUtil.create('button', 'leaflet-bar leaflet-control leaflet-control-custom');
+                button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/></svg>';
+                button.style.backgroundColor = 'white';
+                button.style.padding = '6px 10px';
+                button.style.cursor = 'pointer';
+
+                button.onclick = () => {
+                    map.setView(initialCoords, initialZoom);
+                };
+
+                return button;
+            }
+        });
+        map.addControl(new resetViewControl());
+        const markers = L.markerClusterGroup();
+        const campgrounds = JSON.parse(`<%- JSON.stringify(campgrounds) %>`);
+        for (let campground of campgrounds) {
+            markers.addLayer(
+                L.marker([campground.coordinates[0], campground.coordinates[1]])
+                    .bindPopup(`<strong><a href="/campgrounds/${campground._id}">${campground.title}</a></strong></br><b>${campground.location}</b>`)
+            );
+        }
+        map.addLayer(markers);
+
+        document.getElementById("navbar").addEventListener("click", () => {
+            if (window.scrollY != 0) window.scrollY = 0;
+        })
+
+    </script>
+</body>
+
+</html>

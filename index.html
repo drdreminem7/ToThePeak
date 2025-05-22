@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Free OSM Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="locationInput" placeholder="Enter location (e.g., Paris)">
+    <button onclick="findLocation()">Show Map</button>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([0, 0], 2);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        async function findLocation() {
+            const location = document.getElementById("locationInput").value;
+            const response = await fetch(
+                `https://nominatim.openstreetmap.org/search?format=json&q=${location}`,
+                { headers: { 'User-Agent': 'YourAppName' } } // Required!
+            );
+            const data = await response.json();
+
+            if (data.length > 0) {
+                const lat = data[0].lat;
+                const lon = data[0].lon;
+                map.setView([lat, lon], 13);
+                L.marker([lat, lon]).addTo(map)
+                    .bindPopup(`<b>${location}</b>`).openPopup();
+            }
+        }
+
+        fetch("https://api.unsplash.com/photos/random?client_id=f-OrHpT1Yb87V3U2Bm_DnI8aPNLqRFQePXMY80e-c3g")
+            .then(res => res.json())
+            .then(data => console.log(data.urls.small));
+    </script>
+</body>
+
+</html>

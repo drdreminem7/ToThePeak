@@ -1,0 +1,38 @@
+.campground-img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.img-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 66.66%; /* 3:2 aspect ratio (adjust if needed) */
+    overflow: hidden;
+    border-radius: 0.5rem; /* Optional, matches Bootstrap’s rounded */
+}
+
+.card-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-img-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+}
+
+.carousel-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}

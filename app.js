@@ -19,11 +19,10 @@ const userRoutes = require("./routes/users");
 const campgroundRoutes = require("./routes/campgrounds");
 const reviewRoutes = require("./routes/reviews");
 
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/ToThePeak";
 // const { MongoClient, ServerApiVersion } = require("mongodb");
-// const uri =
-//     "mongodb+srv://harialta:RLlinKtaHtdWyA4Q@peakpoint.9zxqlfi.mongodb.net/?retryWrites=true&w=majority&appName=PeakPoint";
 
-// const client = new MongoClient(uri, {
+// const client = new MongoClient(dbUrl, {
 //     serverApi: {
 //         version: ServerApiVersion.v1,
 //         strict: true,
@@ -41,11 +40,11 @@ const reviewRoutes = require("./routes/reviews");
 //     }
 // }
 // run().catch(console.dir);
-const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/ToThePeak";
+
 mongoose
     .connect(dbUrl)
     .then(() => {
-        console.log("Database Connected");
+        console.log(`Database Connected - ${dbUrl}`);
     })
     .catch((e) => console.log(e));
 const db = mongoose.connection;

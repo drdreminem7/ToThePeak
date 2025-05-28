@@ -43,23 +43,38 @@ A full-stack web application that helps users discover huts and campgrounds in B
 ---
 
 ## 📸 Screenshots
-Home Page
-![Screenshot](WebsiteImages/Home.png)
-Index Page
-![Screenshot](WebsiteImages/IndexPage.png)
-Register Page
-![Screenshot](WebsiteImages/Register.png)
-Login Page
-![Screenshot](WebsiteImages/Login.png)
-Show Page
-![Screenshot](WebsiteImages/ShowPage.png)
-Reviews Look
-![Screenshot](WebsiteImages/Reviews.png)
-Edit Page
-![Screenshot](WebsiteImages/EditPage.png)
-New Page
-![Screenshot](WebsiteImages/NewPage.png)
 
+**Home Page**
+
+![Screenshot](WebsiteImages/Home.png)
+
+**Index Page**
+
+![Screenshot](WebsiteImages/IndexPage.png)
+
+**Register Page**
+
+![Screenshot](WebsiteImages/Register.png)
+
+**Login Page**
+
+![Screenshot](WebsiteImages/Login.png)
+
+**Show Page**
+
+![Screenshot](WebsiteImages/ShowPage.png)
+
+**Reviews Look**
+
+![Screenshot](WebsiteImages/Reviews.png)
+
+**Edit Page**
+
+![Screenshot](WebsiteImages/EditPage.png)
+
+**New Page**
+
+![Screenshot](WebsiteImages/NewPage.png)
 
 
 ---

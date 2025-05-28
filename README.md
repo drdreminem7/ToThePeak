@@ -30,6 +30,9 @@ A full-stack web application that helps users discover huts and campgrounds in B
 - MongoDB (with Mongoose)
 - Passport.js (Authentication)
 - Cloudinary (Image hosting)
+- Session and Flash (Sessions are kept in the database)
+- Helmet.js - Security
+- Joi - Scheme Validation
 
 **Dev & Deployment:**
 - Git & GitHub
@@ -40,14 +43,21 @@ A full-stack web application that helps users discover huts and campgrounds in B
 ---
 
 ## 📸 Screenshots
-
+Home Page
 ![Screenshot](WebsiteImages/Home.png)
+Index Page
 ![Screenshot](WebsiteImages/IndexPage.png)
+Register Page
 ![Screenshot](WebsiteImages/Register.png)
+Login Page
 ![Screenshot](WebsiteImages/Login.png)
+Show Page
 ![Screenshot](WebsiteImages/ShowPage.png)
+Reviews Look
 ![Screenshot](WebsiteImages/Reviews.png)
+Edit Page
 ![Screenshot](WebsiteImages/EditPage.png)
+New Page
 ![Screenshot](WebsiteImages/NewPage.png)
 
 
@@ -66,10 +76,10 @@ During the development of ToThePeak, I deepened my understanding of:
 
 ## 👤 Author
 
-**Hristo Altǎparmakov**  
-📧 [YourEmail@example.com]  
+**Hari Altaparmakov**  
+📧 [harialta04@gmail.com]  
 🌍 Bulgaria  
-📱 [Facebook](https://facebook.com/yourprofile) | [Instagram](https://instagram.com/yourprofile)
+📱 [Facebook](https://www.facebook.com/harry.alta.3) | [Instagram](https://www.instagram.com/_harry.alta_/)
 
 ---
 

@@ -23,7 +23,6 @@ A full-stack web application that helps users discover huts and campgrounds in B
 - HTML, CSS, JavaScript
 - EJS (Templating Engine)
 - Bootstrap
-- Sass
 
 **Backend:**
 - Node.js
@@ -42,7 +41,7 @@ A full-stack web application that helps users discover huts and campgrounds in B
 
 ## 📸 Screenshots
 
-_Add a few screenshots here (optional) to showcase the interface and functionality._
+
 
 ---
 
